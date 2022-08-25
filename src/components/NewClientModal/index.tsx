@@ -8,10 +8,23 @@ export default function NewClientModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [procedureValue, setProcedureValue] = useState('');
-  const [quota, setQuota] = useState('');
+  const [quotas, setQuotas] = useState('');
   const [payDay, setPayDay] = useState('');
 
   const handleClose = () => {
+    const quotaValue = Number(procedureValue) / Number(quotas);
+    const newClient = {
+      name,
+      email,
+      procedureValue,
+      quotas,
+      payDay,
+      quotaValue,
+    };
+
+    const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
+
+    localStorage.setItem('clients', JSON.stringify([...allClients, newClient]));
     setShow(false);
   };
   const handleShow = () => setShow(true);
@@ -63,8 +76,8 @@ export default function NewClientModal() {
               <Form.Control
                 type="number"
                 autoFocus
-                value={quota}
-                onChange={(e) => setQuota(e.target.value)}
+                value={quotas}
+                onChange={(e) => setQuotas(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
