@@ -1,38 +1,48 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useContext } from 'react';
 import Table from 'react-bootstrap/Table';
+import AppContext from '../context/AppContext';
+import './styles.scss';
 
 export default function ClientTable() {
+  const { clients } = useContext(AppContext);
+
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+    <div className="table-container">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Valor do Proced.</th>
+            <th>Numero de parcelas</th>
+            <th>Valor das parcelas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+          clients.map((client, index) => (
+            <tr>
+              <td>{index + 1}</td>
+              <td>{client.name}</td>
+              <td>
+                R$
+                {client.procedureValue}
+              </td>
+              <td>
+                R$
+                {client.quotas}
+              </td>
+              <td>
+                R$
+                {client.quotaValue}
+              </td>
+            </tr>
+          ))
+        }
+        </tbody>
+      </Table>
+    </div>
   );
 }

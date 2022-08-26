@@ -1,0 +1,8 @@
+.table-container { 
+    max-width: 100%;
+    overflow: scroll
+}
+
+.table-container::-webkit-scrollbar {
+    display: none;
+}

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import AppContext from '../context/AppContext';
 
 export default function NewClientModal() {
   const [show, setShow] = useState(false);
@@ -10,6 +13,8 @@ export default function NewClientModal() {
   const [procedureValue, setProcedureValue] = useState('');
   const [quotas, setQuotas] = useState('');
   const [payDay, setPayDay] = useState('');
+
+  const { clients, setClients } = useContext(AppContext);
 
   const handleClose = () => {
     const quotaValue = Number(procedureValue) / Number(quotas);
@@ -25,6 +30,14 @@ export default function NewClientModal() {
     const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
 
     localStorage.setItem('clients', JSON.stringify([...allClients, newClient]));
+
+    setClients([...clients, newClient]);
+
+    setName('');
+    setEmail('');
+    setProcedureValue('');
+    setQuotas('');
+    setPayDay('');
     setShow(false);
   };
   const handleShow = () => setShow(true);
