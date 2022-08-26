@@ -63,6 +63,7 @@ export default function NewClientModal() {
                 autoFocus
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                maxLength={20}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -73,6 +74,7 @@ export default function NewClientModal() {
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                maxLength={20}
               />
             </Form.Group>
             <Form.Group className="mb-3">

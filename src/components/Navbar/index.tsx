@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -11,12 +11,21 @@ import NewClientModal from '../NewClientModal';
 import './styles.scss';
 
 export default function NavbarComponent() {
-  const { search, setSearch } = useContext(AppContext);
+  const [state, setState] = useState('');
+  const { setSearch } = useContext(AppContext);
+
+  if (!state.length) {
+    setSearch('');
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearch(state);
+  };
 
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand>Érica</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -26,16 +35,16 @@ export default function NavbarComponent() {
           >
             <NewClientModal />
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
             <Form.Control
               type="search"
               placeholder="Nome do cliente"
               className="me-2"
               aria-label="Search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={state}
+              onChange={(e) => setState(e.target.value)}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" type="submit">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

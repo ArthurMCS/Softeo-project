@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import AppContext, { Client } from './AppContext';
 
 interface Props {
@@ -12,6 +12,11 @@ export default function AppProvider(props: Props) {
   const [clients, setClients] = useState(Array<Client>);
 
   const { children } = props;
+
+  useEffect(() => {
+    const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
+    setClients(allClients);
+  });
 
   const value = useMemo(() => ({
     search,

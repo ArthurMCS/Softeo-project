@@ -6,7 +6,13 @@ import AppContext from '../context/AppContext';
 import './styles.scss';
 
 export default function ClientTable() {
-  const { clients } = useContext(AppContext);
+  const { clients, search } = useContext(AppContext);
+
+  const clientsFiltered = search.length
+    ? clients.filter((client) => client.name.toLowerCase().includes(search.toLowerCase()))
+    : clients;
+
+  console.log(clients);
 
   return (
     <div className="table-container">
@@ -22,7 +28,7 @@ export default function ClientTable() {
         </thead>
         <tbody>
           {
-          clients.map((client, index) => (
+          clientsFiltered.map((client, index) => (
             <tr>
               <td>{index + 1}</td>
               <td>{client.name}</td>
@@ -31,8 +37,8 @@ export default function ClientTable() {
                 {client.procedureValue}
               </td>
               <td>
-                R$
                 {client.quotas}
+                X
               </td>
               <td>
                 R$
