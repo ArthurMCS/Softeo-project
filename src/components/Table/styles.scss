@@ -1,6 +1,15 @@
-.table-container { 
+.table-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
-    overflow: scroll
+    overflow: scroll;
+
+    table {
+        max-width: 1000px;
+        box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
 }
 
 .table-container::-webkit-scrollbar {

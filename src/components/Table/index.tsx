@@ -12,8 +12,6 @@ export default function ClientTable() {
     ? clients.filter((client) => client.name.toLowerCase().includes(search.toLowerCase()))
     : clients;
 
-  console.log(clients);
-
   return (
     <div className="table-container">
       <Table striped bordered hover>
