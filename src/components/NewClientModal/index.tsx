@@ -16,7 +16,7 @@ export default function NewClientModal() {
 
   const { clients, setClients } = useContext(AppContext);
 
-  const handleClose = () => {
+  const handleSubmit = () => {
     const quotaValue = Number(procedureValue) / Number(quotas);
     const newClient = {
       name,
@@ -40,6 +40,7 @@ export default function NewClientModal() {
     setPayDay('');
     setShow(false);
   };
+
   const handleShow = () => setShow(true);
 
   return (
@@ -48,13 +49,13 @@ export default function NewClientModal() {
         Cadastrar Cliente
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Cadastro</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control
@@ -64,6 +65,7 @@ export default function NewClientModal() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={20}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -75,7 +77,11 @@ export default function NewClientModal() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 maxLength={20}
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Por favor, preencha este campo.
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Valor do procedimento</Form.Label>
@@ -84,7 +90,11 @@ export default function NewClientModal() {
                 autoFocus
                 value={procedureValue}
                 onChange={(e) => setProcedureValue(e.target.value)}
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Por favor, preencha este campo.
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Numero de parcelas</Form.Label>
@@ -93,6 +103,7 @@ export default function NewClientModal() {
                 autoFocus
                 value={quotas}
                 onChange={(e) => setQuotas(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -102,19 +113,22 @@ export default function NewClientModal() {
                 autoFocus
                 value={payDay}
                 onChange={(e) => setPayDay(e.target.value)}
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Por favor, preencha este campo.
+              </Form.Control.Feedback>
             </Form.Group>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setShow(false)}>
+                Fechar
+              </Button>
+              <Button variant="primary" type="submit">
+                Cadastrar
+              </Button>
+            </Modal.Footer>
           </Form>
-
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Fechar
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Cadastrar
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

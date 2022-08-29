@@ -16,7 +16,7 @@ export default function AppProvider(props: Props) {
   useEffect(() => {
     const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
     setClients(allClients);
-  });
+  }, []);
 
   const value = useMemo(() => ({
     search,

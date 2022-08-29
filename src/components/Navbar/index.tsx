@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -14,9 +14,11 @@ export default function NavbarComponent() {
   const [state, setState] = useState('');
   const { setSearch } = useContext(AppContext);
 
-  if (!state.length) {
-    setSearch('');
-  }
+  useEffect(() => {
+    if (!state.length) {
+      setSearch('');
+    }
+  }, [state]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
