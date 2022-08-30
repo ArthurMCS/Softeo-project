@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import getDateQuotas from '../../utils/getDateQuotas';
 import AppContext from '../context/AppContext';
 
 export default function NewClientModal() {
@@ -12,9 +13,14 @@ export default function NewClientModal() {
   const [email, setEmail] = useState('');
   const [procedureValue, setProcedureValue] = useState('');
   const [quotas, setQuotas] = useState('');
-  const [payDay, setPayDay] = useState('');
+  const [serviceDay, setServiceDay] = useState('');
 
-  const { clients, setClients } = useContext(AppContext);
+  const {
+    clients,
+    setClients,
+    paymentList,
+    setPaymentList,
+  } = useContext(AppContext);
 
   const handleSubmit = () => {
     const quotaValue = Number(procedureValue) / Number(quotas);
@@ -23,9 +29,16 @@ export default function NewClientModal() {
       email,
       procedureValue,
       quotas,
-      payDay,
+      serviceDay,
       quotaValue,
     };
+
+    const list = getDateQuotas(serviceDay, quotas, quotaValue);
+    const allDates = JSON.parse(localStorage.getItem('paymentDates') || '[]');
+
+    localStorage.setItem('paymentDates', JSON.stringify([...allDates, ...list]));
+
+    setPaymentList([...paymentList, ...list]);
 
     const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
 
@@ -37,7 +50,7 @@ export default function NewClientModal() {
     setEmail('');
     setProcedureValue('');
     setQuotas('');
-    setPayDay('');
+    setServiceDay('');
     setShow(false);
   };
 
@@ -111,8 +124,8 @@ export default function NewClientModal() {
               <Form.Control
                 type="date"
                 autoFocus
-                value={payDay}
-                onChange={(e) => setPayDay(e.target.value)}
+                value={serviceDay}
+                onChange={(e) => setServiceDay(e.target.value)}
                 required
               />
               <Form.Control.Feedback type="invalid">

@@ -27,7 +27,7 @@ export default function ClientTable() {
         <tbody>
           {
           clientsFiltered.map((client, index) => (
-            <tr>
+            <tr key={Math.random()}>
               <td>{index + 1}</td>
               <td>{client.name}</td>
               <td>
