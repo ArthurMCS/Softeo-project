@@ -2,6 +2,14 @@ nav {
     margin-bottom: 70px;
     min-height: 80px;
     box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.1);
+
+    .btn-modal {
+        margin-left: 10px;
+        @media (max-width: 768px) {
+            margin-bottom: 10px;
+            margin-left: 0;
+        }
+    }
 }
 
 .navbar-brand {

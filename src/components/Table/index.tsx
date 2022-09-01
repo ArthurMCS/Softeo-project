@@ -32,7 +32,7 @@ export default function ClientTable() {
               <td>{client.name}</td>
               <td>
                 R$
-                {client.procedureValue}
+                {Number(client.procedureValue).toFixed(2)}
               </td>
               <td>
                 {client.quotas}
@@ -40,7 +40,7 @@ export default function ClientTable() {
               </td>
               <td>
                 R$
-                {client.quotaValue}
+                {client.quotaValue.toFixed(2)}
               </td>
             </tr>
           ))

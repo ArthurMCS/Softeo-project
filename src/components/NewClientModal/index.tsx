@@ -58,7 +58,7 @@ export default function NewClientModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow} className="btn-modal">
         Cadastrar Cliente
       </Button>
 

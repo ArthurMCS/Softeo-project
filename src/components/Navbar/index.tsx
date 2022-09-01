@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import AppContext from '../context/AppContext';
 import NewClientModal from '../NewClientModal';
+import ReceivableModal from '../ReceivableModal';
 import './styles.scss';
 
 export default function NavbarComponent() {
@@ -36,6 +37,7 @@ export default function NavbarComponent() {
             navbarScroll
           >
             <NewClientModal />
+            <ReceivableModal />
           </Nav>
           <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
             <Form.Control
