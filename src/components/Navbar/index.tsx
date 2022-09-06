@@ -42,7 +42,7 @@ export default function NavbarComponent() {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            style={{ maxHeight: '400px' }}
             navbarScroll
           >
             <NewClientModal />
@@ -52,6 +52,7 @@ export default function NavbarComponent() {
           <h1>
             Total a receber:
             {' '}
+            R$
             {totalValue}
           </h1>
           <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
