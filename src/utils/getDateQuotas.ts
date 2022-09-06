@@ -1,4 +1,4 @@
-const getDateQuotas = (date: string, quotas: string, quotaValue: number) => {
+const getDateQuotas = (id:string, date: string, quotas: string, quotaValue: number) => {
   const dateArray = date.split('-');
   const [year, month, day] = dateArray.map(Number);
   const dateInit = new Date(year, month - 1, day);
@@ -14,7 +14,7 @@ const getDateQuotas = (date: string, quotas: string, quotaValue: number) => {
     const monthSingle = dateInit.getMonth() + 1;
     const yearSingle = dateInit.getFullYear();
 
-    dates.push({ date: `${yearSingle}-${monthSingle}-${daySingle}`, value: quotaValue });
+    dates.push({ id, date: `${yearSingle}-${monthSingle}-${daySingle}`, value: quotaValue });
   }
 
   return dates;

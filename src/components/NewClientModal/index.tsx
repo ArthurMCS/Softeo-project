@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { v4 as uuidv4 } from 'uuid';
 import getDateQuotas from '../../utils/getDateQuotas';
 import AppContext from '../context/AppContext';
 
@@ -22,9 +23,13 @@ export default function NewClientModal() {
     setPaymentList,
   } = useContext(AppContext);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = uuidv4();
+
     const quotaValue = Number(procedureValue) / Number(quotas);
     const newClient = {
+      id,
       name,
       email,
       procedureValue,
@@ -33,7 +38,7 @@ export default function NewClientModal() {
       quotaValue,
     };
 
-    const list = getDateQuotas(serviceDay, quotas, quotaValue);
+    const list = getDateQuotas(id, serviceDay, quotas, quotaValue);
     const allDates = JSON.parse(localStorage.getItem('paymentDates') || '[]');
 
     localStorage.setItem('paymentDates', JSON.stringify([...allDates, ...list]));

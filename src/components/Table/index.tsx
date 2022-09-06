@@ -6,7 +6,7 @@ import AppContext from '../context/AppContext';
 import './styles.scss';
 
 export default function ClientTable() {
-  const { clients, search } = useContext(AppContext);
+  const { clients, search, paymentList } = useContext(AppContext);
 
   const clientsFiltered = search.length
     ? clients.filter((client) => client.name.toLowerCase().includes(search.toLowerCase()))
@@ -20,14 +20,15 @@ export default function ClientTable() {
             <th>#</th>
             <th>Nome</th>
             <th>Valor do Proced.</th>
-            <th>Numero de parcelas</th>
+            <th>Total de parcelas</th>
             <th>Valor das parcelas</th>
+            <th>Parcelas pagas</th>
           </tr>
         </thead>
         <tbody>
           {
           clientsFiltered.map((client, index) => (
-            <tr key={Math.random()}>
+            <tr key={client.id}>
               <td>{index + 1}</td>
               <td>{client.name}</td>
               <td>
@@ -41,6 +42,12 @@ export default function ClientTable() {
               <td>
                 R$
                 {client.quotaValue.toFixed(2)}
+              </td>
+              <td>
+                {
+                Number(client.quotas) - paymentList
+                  .filter((payment) => payment.id === client.id).length
+                }
               </td>
             </tr>
           ))

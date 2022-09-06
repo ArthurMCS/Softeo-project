@@ -8,15 +8,20 @@ interface Props {
 }
 
 export interface PaymentDate {
+  id: string,
   date: string,
   value: number,
+}
+
+export interface Payment {
+  id?: string;
+  quotasPaid?: number;
 }
 
 export default function AppProvider(props: Props) {
   const [search, setSearch] = useState('');
   const [clients, setClients] = useState(Array<Client>);
   const [paymentList, setPaymentList] = useState(Array<PaymentDate>);
-
   const { children } = props;
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export default function AppProvider(props: Props) {
     setClients,
     paymentList,
     setPaymentList,
-  }), [search, clients]);
+  }), [search, clients, paymentList]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

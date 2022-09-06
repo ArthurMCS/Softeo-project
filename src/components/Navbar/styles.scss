@@ -3,6 +3,12 @@ nav {
     min-height: 80px;
     box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.1);
 
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
     .btn-modal {
         margin-left: 10px;
         @media (max-width: 768px) {

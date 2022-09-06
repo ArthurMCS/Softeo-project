@@ -4,6 +4,7 @@ import React, { createContext } from 'react';
 import { PaymentDate } from './AppProvider';
 
 export interface Client {
+    id: string;
     name: string;
     email: string;
     procedureValue: string;
