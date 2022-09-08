@@ -63,8 +63,12 @@ export default function NewClientModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="btn-modal">
-        Cadastrar Cliente
+      <Button
+        variant="primary"
+        onClick={handleShow}
+        className="btn-modal"
+      >
+        Cadastrar atendimento
       </Button>
 
       <Modal show={show} onHide={() => setShow(false)}>
@@ -109,6 +113,7 @@ export default function NewClientModal() {
                 value={procedureValue}
                 onChange={(e) => setProcedureValue(e.target.value)}
                 required
+                data-testid="procedure-value-input"
               />
               <Form.Control.Feedback type="invalid">
                 Por favor, preencha este campo.
@@ -122,6 +127,7 @@ export default function NewClientModal() {
                 value={quotas}
                 onChange={(e) => setQuotas(e.target.value)}
                 required
+                data-testid="number-of-quotas-input"
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -132,6 +138,7 @@ export default function NewClientModal() {
                 value={serviceDay}
                 onChange={(e) => setServiceDay(e.target.value)}
                 required
+                data-testid="first-quota-date-input"
               />
               <Form.Control.Feedback type="invalid">
                 Por favor, preencha este campo.

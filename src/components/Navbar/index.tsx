@@ -49,7 +49,7 @@ export default function NavbarComponent() {
             <ReceivableModal />
             <PaymentModal />
           </Nav>
-          <h1>
+          <h1 data-testid="total-receivable">
             Total a receber:
             {' '}
             R$

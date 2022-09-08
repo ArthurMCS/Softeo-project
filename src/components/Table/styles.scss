@@ -5,14 +5,15 @@
     max-width: 100%;
     overflow: scroll;
 
+    @media (max-width: 480px) {
+        display: block;
+        margin: 0 auto;
+    }
+
     table {
         max-width: 1000px;
         box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.1);
         background-color: #fff;
-
-        @media (max-width: 390px) {
-            margin-left: 130px;
-        }
     }
 }
 

@@ -55,6 +55,7 @@ export default function ReceivableModal() {
                 autoFocus
                 value={initialDate}
                 onChange={(e) => setInitialDate(e.target.value)}
+                data-testid="initialDate-input"
               />
             </Form.Group>
             <Form.Group
@@ -66,12 +67,13 @@ export default function ReceivableModal() {
                 autoFocus
                 value={finalDate}
                 onChange={(e) => setFinalDate(e.target.value)}
+                data-testid="finalDate-input"
               />
             </Form.Group>
             <div className="btn-and-value-wrapper">
               <Button type="submit">Ver valor</Button>
               {totalValue !== 0 && (
-              <h1>
+              <h1 data-testid="amounts-receivable">
                 R$
                 {totalValue.toFixed(2)}
               </h1>
