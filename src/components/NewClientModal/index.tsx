@@ -98,7 +98,7 @@ export default function NewClientModal() {
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                maxLength={20}
+                maxLength={30}
                 required
               />
               <Form.Control.Feedback type="invalid">
