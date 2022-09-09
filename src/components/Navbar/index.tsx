@@ -3,7 +3,6 @@
 import React, {
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -19,6 +18,7 @@ import './styles.scss';
 
 export default function NavbarComponent() {
   const [state, setState] = useState('');
+  const [totalValue, setTotalValue] = useState('');
   const { setSearch, paymentDateList } = useContext(AppContext);
 
   useEffect(() => {
@@ -27,8 +27,10 @@ export default function NavbarComponent() {
     }
   }, [state]);
 
-  const totalValue = useMemo(() => (
-    paymentDateList.reduce((acc, curr) => acc + curr.value, 0).toFixed(2)), [paymentDateList]);
+  useEffect(() => {
+    const result = paymentDateList.reduce((acc, curr) => acc + curr.value, 0);
+    setTotalValue(result.toFixed(2));
+  }, [paymentDateList]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
