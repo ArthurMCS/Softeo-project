@@ -1,0 +1,16 @@
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+
+    button {
+        width: 80px;
+    }
+}

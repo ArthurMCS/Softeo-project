@@ -3,6 +3,7 @@
 import React, { useContext } from 'react';
 import Table from 'react-bootstrap/Table';
 import AppContext from '../../context/AppContext';
+import DeleteModal from '../DeleteModal';
 import './styles.scss';
 
 export default function ClientTable() {
@@ -23,6 +24,7 @@ export default function ClientTable() {
             <th>Total de parcelas</th>
             <th>Valor das parcelas</th>
             <th>Parcelas pagas</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -48,6 +50,9 @@ export default function ClientTable() {
                 Number(client.quotas) - paymentDateList
                   .filter((payment) => payment.id === client.id).length
                 }
+              </td>
+              <td className="delete-btn-wrapper">
+                <DeleteModal clientid={client.id} />
               </td>
             </tr>
           ))

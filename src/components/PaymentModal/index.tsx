@@ -83,7 +83,7 @@ export default function PaymentModal() {
                         >
                           Valor:
                           {' '}
-                          {pay.value}
+                          {pay.value.toFixed(2)}
                           {' '}
                           -
                           {' '}

@@ -64,7 +64,7 @@ export default function NavbarComponent() {
               value={state}
               onChange={(e) => setState(e.target.value)}
             />
-            <Button variant="outline-success" type="submit">Search</Button>
+            <Button variant="outline-success" type="submit">Procurar</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
