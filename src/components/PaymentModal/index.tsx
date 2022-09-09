@@ -4,8 +4,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import AppContext from '../context/AppContext';
-import { PaymentDate } from '../context/AppProvider';
+import AppContext from '../../context/AppContext';
+import { PaymentDate } from '../../context/AppProvider';
 
 export default function PaymentModal() {
   const [show, setShow] = useState(false);

@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { v4 as uuidv4 } from 'uuid';
 import getDateQuotas from '../../utils/getDateQuotas';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 
 export default function NewClientModal() {
   const [show, setShow] = useState(false);

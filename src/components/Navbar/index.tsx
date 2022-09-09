@@ -11,7 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 import NewClientModal from '../NewClientModal';
 import PaymentModal from '../PaymentModal';
 import ReceivableModal from '../ReceivableModal';

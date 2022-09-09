@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 import './styles.scss';
 
 export default function ReceivableModal() {

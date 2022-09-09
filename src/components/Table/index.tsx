@@ -2,7 +2,7 @@
 /* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import Table from 'react-bootstrap/Table';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 import './styles.scss';
 
 export default function ClientTable() {
