@@ -11,7 +11,7 @@ Este projeto foi realizado a fim de cumprir os requisitos do teste técnico da e
 
 # Tecnologias utilizadas:
 
-React.js, Html, Scss, React Hooks, Context API, LocalStorage
+React.js, Html, Scss, React Hooks, Context API, LocalStorage, BootStrap
 
 # Como instalar as dependências necessárias:
 ```bash
