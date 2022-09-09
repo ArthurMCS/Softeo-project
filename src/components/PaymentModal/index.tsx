@@ -5,16 +5,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import AppContext from '../../context/AppContext';
-import { PaymentDate } from '../../context/AppProvider';
+import { PaymentDate } from '../../interfaces';
 
 export default function PaymentModal() {
   const [show, setShow] = useState(false);
   const [clientId, setClientId] = useState('');
-  const [chosenClientQuotas, setChosenClientQuotas] = useState(Array<PaymentDate>);
+  const [chosenClientQuotas, setChosenClientQuotas] = useState<PaymentDate[]>([]);
   const [payment, setPayment] = useState('');
   const {
-    paymentList,
-    setPaymentList,
+    paymentDateList,
+    setPaymentDateList,
   } = useContext(AppContext);
 
   const handleClose = () => {
@@ -26,18 +26,18 @@ export default function PaymentModal() {
 
   useEffect(() => {
     if (clientId) {
-      const clientQuotas = paymentList.filter((pay) => pay.id === clientId);
+      const clientQuotas = paymentDateList.filter((pay) => pay.id === clientId);
       setChosenClientQuotas(clientQuotas);
     }
   }, [clientId]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const index = paymentList
+    const index = paymentDateList
       .findIndex((pay) => pay.id === clientId && pay.date === payment);
-    paymentList.splice(index, 1);
-    setPaymentList([...paymentList]);
-    localStorage.setItem('paymentDates', JSON.stringify(paymentList));
+    paymentDateList.splice(index, 1);
+    setPaymentDateList([...paymentDateList]);
+    localStorage.setItem('paymentDates', JSON.stringify(paymentDateList));
     handleClose();
     setChosenClientQuotas([]);
     setClientId('');

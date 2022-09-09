@@ -14,13 +14,13 @@ export default function NewClientModal() {
   const [email, setEmail] = useState('');
   const [procedureValue, setProcedureValue] = useState('');
   const [quotas, setQuotas] = useState('');
-  const [serviceDay, setServiceDay] = useState('');
+  const [firstQuotaDate, setFirstQuotaDate] = useState('');
 
   const {
     clients,
     setClients,
-    paymentList,
-    setPaymentList,
+    paymentDateList,
+    setPaymentDateList,
   } = useContext(AppContext);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,16 +34,16 @@ export default function NewClientModal() {
       email,
       procedureValue,
       quotas,
-      serviceDay,
+      firstQuotaDate,
       quotaValue,
     };
 
-    const list = getDateQuotas(id, serviceDay, quotas, quotaValue);
+    const list = getDateQuotas(id, firstQuotaDate, quotas, quotaValue);
     const allDates = JSON.parse(localStorage.getItem('paymentDates') || '[]');
 
     localStorage.setItem('paymentDates', JSON.stringify([...allDates, ...list]));
 
-    setPaymentList([...paymentList, ...list]);
+    setPaymentDateList([...paymentDateList, ...list]);
 
     const allClients = JSON.parse(localStorage.getItem('clients') || '[]');
 
@@ -55,7 +55,7 @@ export default function NewClientModal() {
     setEmail('');
     setProcedureValue('');
     setQuotas('');
-    setServiceDay('');
+    setFirstQuotaDate('');
     setShow(false);
   };
 
@@ -135,8 +135,8 @@ export default function NewClientModal() {
               <Form.Control
                 type="date"
                 autoFocus
-                value={serviceDay}
-                onChange={(e) => setServiceDay(e.target.value)}
+                value={firstQuotaDate}
+                onChange={(e) => setFirstQuotaDate(e.target.value)}
                 required
                 data-testid="first-quota-date-input"
               />

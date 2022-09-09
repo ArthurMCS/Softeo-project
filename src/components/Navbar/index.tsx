@@ -19,7 +19,7 @@ import './styles.scss';
 
 export default function NavbarComponent() {
   const [state, setState] = useState('');
-  const { setSearch, paymentList } = useContext(AppContext);
+  const { setSearch, paymentDateList } = useContext(AppContext);
 
   useEffect(() => {
     if (!state.length) {
@@ -28,7 +28,7 @@ export default function NavbarComponent() {
   }, [state]);
 
   const totalValue = useMemo(() => (
-    paymentList.reduce((acc, curr) => acc + curr.value, 0).toFixed(2)), [paymentList]);
+    paymentDateList.reduce((acc, curr) => acc + curr.value, 0).toFixed(2)), [paymentDateList]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

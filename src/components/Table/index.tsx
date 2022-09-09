@@ -6,7 +6,7 @@ import AppContext from '../../context/AppContext';
 import './styles.scss';
 
 export default function ClientTable() {
-  const { clients, search, paymentList } = useContext(AppContext);
+  const { clients, search, paymentDateList } = useContext(AppContext);
 
   const clientsFiltered = search.length
     ? clients.filter((client) => client.name.toLowerCase().includes(search.toLowerCase()))
@@ -45,7 +45,7 @@ export default function ClientTable() {
               </td>
               <td>
                 {
-                Number(client.quotas) - paymentList
+                Number(client.quotas) - paymentDateList
                   .filter((payment) => payment.id === client.id).length
                 }
               </td>

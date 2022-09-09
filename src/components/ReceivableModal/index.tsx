@@ -11,7 +11,7 @@ export default function ReceivableModal() {
   const [show, setShow] = useState(false);
   const [initialDate, setInitialDate] = useState('');
   const [finalDate, setFinalDate] = useState('');
-  const { paymentList } = useContext(AppContext);
+  const { paymentDateList } = useContext(AppContext);
   const [totalValue, setTotalValue] = useState(0);
 
   const handleClose = () => {
@@ -27,7 +27,7 @@ export default function ReceivableModal() {
     const initial = new Date(initialDate);
     const final = new Date(finalDate);
 
-    const paymentDatesFiltered = paymentList
+    const paymentDatesFiltered = paymentDateList
       .filter((paymentDate) => new Date(paymentDate.date) >= initial
       && new Date(paymentDate.date) <= final);
 
